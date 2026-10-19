@@ -18,7 +18,7 @@ For air-gapped, on-prem, and classified environments, the standalone **Phantom L
 
 | Component | Where it runs | Role |
 |:--|:--|:--|
-| **Relay** | AWS Lambda / Azure Functions / GCP Cloud Functions | Receives agent check-ins, stores inbound data, returns queued tasks |
+| **Cloud Relay** | AWS Lambda / Azure Functions / GCP Cloud Functions | Receives agent check-ins, stores inbound data, returns queued tasks |
 | **Database** | DynamoDB / CosmosDB / Firestore / SQLite (listener) | Stores agent records, inbound/outbound messages, task logs |
 | **CDN** | CloudFront / Azure Front Door / Cloud CDN | Optional domain fronting layer for relay obfuscation |
 | **Teamserver** | Your machine (internal network) | Polls database, decrypts traffic, processes results, serves operator UI |
