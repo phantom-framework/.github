@@ -14,10 +14,13 @@ The teamserver never exposes a port to the internet.
 
 Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions (AWS Lambda, Azure Functions, GCP Cloud Functions) that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports, no static infrastructure, no single point of failure.
 
+For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure entirely. A single static binary acts as the HTTPS relay with a local SQLite database. Same wire protocol, same agent payloads, zero external dependencies.
+
 | Component | Where it runs | Role |
 |:--|:--|:--|
-| **Relay** | AWS Lambda / Azure Functions / GCP Cloud Functions | Receives agent check-ins, stores inbound data, returns queued tasks |
-| **Database** | DynamoDB / CosmosDB / Firestore | Stores agent records, inbound/outbound messages, task logs |
+| **Cloud Relay** | AWS Lambda / Azure Functions / GCP Cloud Functions | Receives agent check-ins, stores inbound data, returns queued tasks |
+| **Listener** | Any Linux host (on-prem, air-gapped, DMZ) | Standalone HTTPS relay with local SQLite. Replaces cloud relays where cloud access is unavailable |
+| **Database** | DynamoDB / CosmosDB / Firestore / SQLite (listener) | Stores agent records, inbound/outbound messages, task logs |
 | **CDN** | CloudFront / Azure Front Door / Cloud CDN | Optional domain fronting layer for relay obfuscation |
 | **Teamserver** | Your machine (internal network) | Polls database, decrypts traffic, processes results, serves operator UI |
 | **Web UI** | Your browser | Operator console for agent management and tasking |
@@ -68,6 +71,23 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Most frameworks require a publicly exposed listener (HTTP/S, DNS, SMB) that can be fingerprinted and blocked.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><b>AIR-GAPPED / ON-PREM OPERATIONS</b></td>
+<td>
+<ul>
+<li>Standalone HTTPS listener binary. Single binary with embedded database, no runtime dependencies, no cloud access required.</li>
+<li>Drop-in replacement for cloud relays. Agents use the same wire protocol, same payload builds, same relay authentication.</li>
+<li>Deploy to air-gapped networks, classified environments, on-prem labs, or DMZ hosts where cloud infrastructure is not permitted.</li>
+<li>Hybrid deployments: mix cloud relays and listeners in the same agent relay pool for automatic failover across infrastructure types.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Most frameworks require either a cloud backend or a traditional listener with exposed ports. Operating in disconnected environments without redesigning the C2 chain is rarely supported.</li>
 </ul>
 </td>
 </tr>
