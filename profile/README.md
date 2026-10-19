@@ -428,8 +428,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>CLOUD PAYLOAD HOSTING</b></td>
 <td>
 <ul>
-<li>Upload payloads to S3, Azure Blob Storage, GCS, or Cloudflare R2 directly from the operator console.</li>
-<li>Presigned download URLs with configurable expiry. URLs are auto-refreshed when near expiration.</li>
+<li>Upload and server payloads via Stateless relays directly from the operator console.</li>
 <li>Host and unhost payloads on demand. Cloud storage lifecycle is fully managed by the teamserver.</li>
 </ul>
 </td>
