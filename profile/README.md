@@ -14,7 +14,7 @@ The teamserver never exposes a port to the internet.
 
 Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions (AWS Lambda, Azure Functions, GCP Cloud Functions) that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports, no static infrastructure, no single point of failure.
 
-For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener Plugin** replaces cloud infrastructure entirely. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
+For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
 
 | Component | Where it runs | Role |
 |:--|:--|:--|
