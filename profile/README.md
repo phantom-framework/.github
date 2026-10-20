@@ -140,22 +140,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
-<td><b>SOURCE-FREE PAYLOAD BUILD</b></td>
-<td>
-<ul>
-<li>Payloads are produced by patching pre-compiled agent templates: a magic-marked config blob receives the UUID, encryption key, sleep, relay pool, malleable profile, and evasion options at generation time.</li>
-<li>The teamserver never needs direct agent source code. Distributions ship binaries, manifests, and templates.</li>
-<li>Same generator in the web UI and the CLI whether the agent was built from source or from a template.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Most frameworks compile the implant on the server for every build, which requires a full cross-compilation toolchain and the complete agent source on the operator host. A broken build environment breaks operations.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
 <td><b>MODULE STOMPING</b></td>
 <td>
 <ul>
