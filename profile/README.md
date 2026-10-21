@@ -14,7 +14,7 @@ The teamserver never exposes a port to the internet.
 
 Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions (AWS Lambda, Azure Functions, GCP Cloud Functions) that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports, no static infrastructure, no single point of failure.
 
-For air-gapped, on-prem, and classified environments, the standalone and externally managed **Phantom Listener** replaces cloud infrastructure. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
+For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
 
 | Component | Where it runs | Role |
 |:--|:--|:--|
@@ -303,7 +303,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <ul>
 <li>Integrate any external beacon - or your own payload builder/loader - as a supervised separate process speaking JSON-RPC 2.0 over stdin/stdout. Custom agents integrate without source code access or teamserver recompilation.</li>
 <li>Official Go SDK: implement the protocol and/or builder interface and call <code>Serve()</code>. The wire contract is plain JSON, so plugins can be written in any language.</li>
-<li>Manifest-driven discovery: drop the agent directory into the templates directory and it appears in the payload generator alongside Eclipse and Spectre, with its own build options and console command definitions.</li>
 <li>Decide per agent what the plugin owns: check-in protocol, payload builds, or both.</li>
 <li>Lifecycle fully managed by the server: handshake and capability negotiation, health pings, crash recovery with restart limits, and per-agent core BOF and module directories passed at initialization.</li>
 </ul>
