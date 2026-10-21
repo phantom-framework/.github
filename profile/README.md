@@ -349,7 +349,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>PEER-TO-PEER</b></td>
 <td>
 <ul>
-<li>SMB named pipe pivoting for agent chaining. Parent agents relay traffic for child agents that have no direct internet access.</li>
+<li>SMB named pipe & TCP pivoting for agent chaining. Parent agents relay traffic for child agents that have no direct internet access.</li>
 <li>Link and unlink agents at runtime. The pivot graph is tracked in the UI with parent/child relationships.</li>
 <li>Child agents inherit the parent's relay path. No additional infrastructure required to reach segmented networks.</li>
 </ul>
