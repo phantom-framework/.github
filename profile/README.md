@@ -16,14 +16,6 @@ Phantom separates the attack surface from the operator. Agents communicate exclu
 
 For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
 
-| Component | Where it runs | Role |
-|:--|:--|:--|
-| **Cloud Relay** | AWS Lambda / Azure Functions / GCP Cloud Functions | Receives agent check-ins, stores inbound data, returns queued tasks |
-| **Database** | DynamoDB / CosmosDB / Firestore / SQLite (listener) | Stores agent records, inbound/outbound messages, task logs |
-| **CDN** | CloudFront / Azure Front Door / Cloud CDN | Optional domain fronting layer for relay obfuscation |
-| **Teamserver** | Your machine (internal network) | Polls database, decrypts traffic, processes results, serves operator UI |
-| **Web UI** | Your browser | Operator console for agent management and tasking |
-
 <br>
 
 ## Agents
