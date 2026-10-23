@@ -244,7 +244,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>VIRTUAL MACHINE EXECUTION</b></td>
 <td>
 <ul>
-<li>Custom bytecode RISC VM with a full instruction set and native function interop.</li>
+<li>Custom bytecode RISC-V VM with a full instruction set and native function interop.</li>
 <li>Server-side assembler compiles VM programs for deployment to agents.</li>
 <li>Beacon API integration: output, token manipulation, and file downloads from VM programs.</li>
 </ul>
