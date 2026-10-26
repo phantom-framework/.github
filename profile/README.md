@@ -259,7 +259,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>BOF EXECUTION</b></td>
 <td>
 <ul>
-<li>Windows: COFF loader with full Beacon API compatibility and async execution.</li>
+<li>Windows: COFF loader with full Beacon API compatibility and Async execution.</li>
 <li>Linux: ELF64 loader with broad libc symbol resolution.</li>
 <li>BOF API calls are routed through the agent's evasion layer.</li>
 </ul>
@@ -403,8 +403,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>ACTIVE DIRECTORY</b></td>
 <td>
 <ul>
-<li>Three query protocols: LDAP/LDAPS, ADWS, and Kerberos, all executed in-process as BOFs with no external tooling.</li>
-<li>Full CRUD over directory objects: enumerate, create, modify, move, and remove users, computers, groups, OUs, ACLs, SPNs, and delegation settings from the agent.</li>
 <li>Credential extraction results are automatically parsed and fed into the framework's credential store. DCSync hashes, LAPS passwords, and Kerberos keys appear in the operator console immediately.</li>
 <li>Enumerated hosts are auto-populated into the Targets panel for tracking across the engagement.</li>
 <li>Integrated relay viability checks across LDAP, SMB, HTTP, and MSSQL protocols.</li>
@@ -412,7 +410,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </td>
 <td>
 <ul>
-<li>AD tooling is typically ported from standalone tools rather than built for in-process execution. Credential output usually requires manual parsing, and results are not fed back into the framework automatically.</li>
+<li>Credential output usually requires manual parsing, and results are not fed back into the framework automatically.</li>
 </ul>
 </td>
 </tr>
@@ -421,7 +419,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>CLOUD PAYLOAD HOSTING</b></td>
 <td>
 <ul>
-<li>Upload and server payloads via Stateless relays directly from the operator console.</li>
+<li>Upload and serve payloads via Stateless relays directly from the operator console.</li>
 <li>Host and unhost payloads on demand. Cloud storage lifecycle is fully managed by the teamserver.</li>
 </ul>
 </td>
@@ -436,7 +434,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>.NET &amp; PE EXECUTION</b></td>
 <td>
 <ul>
-<li>In-process .NET assembly execution (<code>execute-assembly</code>) with synchronous and async modes.</li>
+<li>In-process or Fork-and-run .NET assembly execution (<code>execute-assembly</code>) with synchronous and async modes.</li>
 <li>Unmanaged PE execution in agent memory with support for EXE and DLL binaries, method selection, PE caching, and dependency loading.</li>
 <li>AMSI and ETW bypass applied to .NET execution contexts.</li>
 </ul>
@@ -453,13 +451,14 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Real-time web UI over WebSocket. Session table, network graph, and global task views. Tabbed lower pane with drag-and-drop reordering and side-by-side split.</li>
+<li>Dock layout selection support.</li>
 <li>Per-agent console, file browser, process browser, and screenshot gallery.</li>
 <li>Integrated credential store with search, export, and automatic population from post-exploitation output.</li>
 <li>Payload store, tunnel manager, target tracker, team chat, and event log.</li>
 <li>Built-in pf script editor, VM bytecode editor, and communication profile editor.</li>
 <li>Multi-operator presence: see who is online, which agent they are focused on, and when they are typing.</li>
 <li>Role-based access control with admin and operator roles. Read-only mode for observers.</li>
-<li>One-click operation report export as a self-contained HTML document. All operational data is mapped to MITRE ATT&amp;CK tactics and techniques. Includes tactic/technique distribution charts, IOC extraction, and a filterable chronological timeline.</li>
+<li>One-click operation report export as a self-contained PDF document. All operational data is mapped to MITRE ATT&amp;CK tactics and techniques. Includes tactic/technique distribution charts, IOC extraction, and a filterable chronological timeline.</li>
 </ul>
 </td>
 <td>
