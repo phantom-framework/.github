@@ -3,7 +3,7 @@
 
 **Serverless command-and-control framework built for professional red team operations.**
 
-Cloud functions act as stateless relays. All persistent state lives in cloud-native databases.<br>
+Cloud functions act as stateless relays.<br>
 The teamserver never exposes a port to the internet.
 
 </div>
