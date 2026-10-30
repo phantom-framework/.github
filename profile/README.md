@@ -66,10 +66,9 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
-<td><b>AIR-GAPPED / ON-PREM OPERATIONS</b></td>
+<td><b>DISTRIBUTED LISTENER ARCH</b></td>
 <td>
 <ul>
-<li>Standalone HTTPS listener binary. Single binary with embedded database, no runtime dependencies, no cloud access required.</li>
 <li>Drop-in replacement for cloud relays. Agents use the same wire protocol, same payload builds, same relay authentication.</li>
 <li>Deploy to air-gapped networks, classified environments, on-prem labs, or DMZ hosts where cloud infrastructure is not permitted.</li>
 <li>Hybrid deployments: mix cloud relays and listeners in the same agent relay pool for automatic failover across infrastructure types.</li>
