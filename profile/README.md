@@ -13,7 +13,7 @@ Cloud functions act as stateless relays. The teamserver never exposes a port to 
 
 Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports, no static infrastructure, no single point of failure.
 
-For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A single static binary acts as the HTTPS relay with a local DB. Same wire protocol, same agent payloads, zero external dependencies.
+For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A distributed listener architecture separates the traffic-receiving endpoints from the teamserver, which acts as the HTTPS relay. Same wire protocol, same agent payloads, zero external dependencies.
 
 <br>
 
