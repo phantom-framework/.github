@@ -305,16 +305,16 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
-<td><b>PROCESS INJECTION</b></td>
+<td><b>HTTPS SNI spoofing</b></td>
 <td>
 <ul>
-<li>Multiple thread pool-based injection variants.</li>
-<li>Additional methods including section mapping, CFG-aware injection, and cross-architecture (WoW64) injection.</li>
+<li>Windows & Linux Agents supports spoofing the Server Name Indication (SNI) hostname used during HTTPS TLS handshakes.</li>
+<li>Bypass network controls and filtering rules that make decisions based on observed SNI values.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Injection is commonly limited to classic techniques (APC, thread hijacking, process hollowing) that are well-covered by behavioral detections.</li>
+<li>Not supported or unavailable in many competing frameworks.</li>
 </ul>
 </td>
 </tr>
