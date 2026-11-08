@@ -29,7 +29,7 @@ Two native implants. No interpreted languages, no managed runtimes, no framework
 | **Linking** | Fully position-independent, zero static imports | PIE with optional musl static linking |
 | **BOF engine** | COFF loader with Beacon API compatibility | ELF loader with trampoline table resolution |
 
-These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK (see below) without touching the teamserver.
+These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK without touching the teamserver.
 
 <br>
 
