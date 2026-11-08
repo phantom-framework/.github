@@ -433,7 +433,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>.NET &amp; PE EXECUTION</b></td>
 <td>
 <ul>
-<li>In-process or Fork-and-run .NET assembly execution (<code>execute-assembly</code>) with synchronous and async modes.</li>
+<li>In-process or Fork-and-run .NET assembly execution with synchronous and async modes.</li>
 <li>Unmanaged PE execution in agent memory with support for EXE and DLL binaries, method selection, PE caching, and dependency loading.</li>
 <li>AMSI and ETW bypass applied to .NET execution contexts.</li>
 </ul>
