@@ -212,7 +212,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <ul>
 <li>JSON-based malleable HTTP profiles with per-URI client and server output configuration.</li>
 <li>Output placement: body, header, cookie, or parameter.</li>
-<li>Data transforms: XOR mask, prepend, append, base64, base64url, base32, hex.</li>
 </ul>
 </td>
 <td>
