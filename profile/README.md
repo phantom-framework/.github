@@ -28,7 +28,7 @@ Two native implants. No interpreted languages, no managed runtimes, no framework
 | **Output** | PIC shellcode, EXE, DLL, Service EXE | ELF, raw binary |
 | **Linking** | Fully position-independent, zero static imports | PIE with optional musl static linking |
 | **BOF engine** | COFF loader with Beacon API compatibility | ELF loader with trampoline table resolution |
-| **Channels** | HTTP, DoH, TCP, SMB | HTTP, TCP |
+| **Channels** | HTTP, DNS over HTTPS, TCP, SMB | HTTP, TCP |
 
 
 These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK without touching the teamserver.
