@@ -3,7 +3,7 @@
 
 **Serverless command-and-control framework built for professional red team operations.**
 
-Using Cloud functions as stateless relays or stand-in relay listeners. The teamserver never exposes a port to the internet. This is designed from an OPSEC-first principle and as a competitor to Cobalt Strike.<br>
+Cloud functions act as stateless relay. The teamserver never exposes a port to the internet. This is designed from an OPSEC-first principle.<br>
 
 </div>
 
