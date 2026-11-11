@@ -13,6 +13,8 @@ Phantom separates the attack surface from the operator. Agents communicate exclu
 
 For air-gapped, on-prem, and classified environments, the stand-in **Phantom Listener** replaces cloud infrastructure. A distributed listener architecture separating the traffic-receiving endpoints from the teamserver, which acts as the HTTPS relay. Same wire protocol.
 
+A fifth transport, **UDC2**, moves the agent's wire format out of the implant and into a resident module. The module speaks an arbitrary protocol to a small external controller, which forwards frames through the same relay ingress. Channels can be embedded at build time or hot-swapped into a live agent without rebuilding it.
+
 <br>
 
 ## Agents
@@ -26,7 +28,7 @@ Two native implants. No interpreted languages, no managed runtimes, no framework
 | **Output** | PIC shellcode, EXE, DLL, Service EXE | ELF, raw binary |
 | **Linking** | Fully position-independent, zero static imports | PIE with optional musl static linking |
 | **BOF engine** | COFF loader with Beacon API compatibility | ELF loader with trampoline table resolution |
-| **Channels** | HTTP, DNS over HTTPS, TCP, SMB | HTTP, TCP |
+| **Channels** | HTTP, DNS over HTTPS, TCP, SMB, UDC2 channel modules | HTTP, TCP, UDC2 channel modules |
 
 
 These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK without touching the teamserver.
@@ -215,6 +217,27 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Profile systems exist but are often limited in transform depth or lack per-URI granularity.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><b>USER-DEFINED C2 CHANNELS (UDC2)</b></td>
+<td>
+<ul>
+<li>Transport logic lives in a loadable module - an operator-written COFF (Windows) or ELF (Linux) object implementing the UDC2 ABI. No teamserver recompilation and no new internet-facing listener.</li>
+<li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent with <code>channel load</code> / <code>channel start</code> and revert with <code>channel stop</code>. Existing HTTP, DoH, TCP, and SMB builds adopt a channel without being regenerated.</li>
+<li>The external controller bridges any protocol to the existing relay HMAC ingress. It sees only ciphertext, needs no database or API access, and the teamserver still exposes zero agent-facing ports.</li>
+<li>Channel kit with a complete reference ICMP channel for Eclipse (Windows x64) and Spectre (Linux x86-64), controller source, typed argument validation, and systemd deployment guidance.</li>
+<li>Channel management in the operator console: bind a kit module to an existing relay listener, set platform arguments, test the module, and export a ready-to-run controller config with the exact relay and argument values.</li>
+<li>Any relay listener - AWS, Azure, GCP, or local - can be the controller's ingress, preserving multi-cloud parity with no schema or provider changes.</li>
+<li>Optional fallback returns the agent to its bootstrap HTTP/DoH transport after consecutive channel failures. Pure UDC2 payloads intentionally have no fallback.</li>
+<li>Compatible with the established UDC2 ABI, so existing channel BOFs port with minimal changes.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Custom transports usually require modifying the implant or framework source and rebuilding. New protocols typically mean a new listener, a schema change, or a fork of the C2 chain, and live agents cannot switch transport without redeployment.</li>
 </ul>
 </td>
 </tr>
@@ -454,6 +477,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <li>Integrated credential store with search, export, and automatic population from post-exploitation output.</li>
 <li>Payload store, tunnel manager, target tracker, team chat, and event log.</li>
 <li>Built-in pf script editor, VM bytecode editor, and communication profile editor.</li>
+<li>UDC2 channel manager: define channels from kit modules, bind them to relay listeners, validate arguments, and export controller configuration.</li>
 <li>Multi-operator presence: see who is online, which agent they are focused on, and when they are typing.</li>
 <li>Role-based access control with admin and operator roles. Read-only mode for observers.</li>
 <li>One-click operation report export as a self-contained PDF document. All operational data is mapped to MITRE ATT&amp;CK tactics and techniques. Includes tactic/technique distribution charts, IOC extraction, and a filterable chronological timeline.</li>
