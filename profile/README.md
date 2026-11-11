@@ -1,9 +1,9 @@
 
 # Phantom Framework
 
-**Serverless command-and-control framework built for professional red team operations.**
+**Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.**
 
-Cloud functions act as stateless relay. The teamserver never exposes a port to the internet. Designed from an OPSEC-first principle.<br>
+Designed from an OPSEC-first principle.<br>
 
 </div>
 
@@ -11,9 +11,9 @@ Cloud functions act as stateless relay. The teamserver never exposes a port to t
 
 ## Architecture
 
-Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports, no static infrastructure, no single point of failure.
+Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports.
 
-For air-gapped, on-prem, and classified environments, the standalone **Phantom Listener** replaces cloud infrastructure. A distributed listener architecture separates the traffic-receiving endpoints from the teamserver, which acts as the HTTPS relay. Same wire protocol, same agent payloads, zero external dependencies.
+For air-gapped, on-prem, and classified environments, the stand-in **Phantom Listener** replaces cloud infrastructure. A distributed listener architecture separating the traffic-receiving endpoints from the teamserver, which acts as the HTTPS relay. Same wire protocol.
 
 <br>
 
