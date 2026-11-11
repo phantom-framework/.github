@@ -3,8 +3,6 @@
 
 **Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.**
 
-Designed from an OPSEC-first principle.<br>
-
 </div>
 
 <br>
