@@ -84,6 +84,22 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
+<td><b>USER-DEFINED C2 CHANNELS (UDC2)</b></td>
+<td>
+<ul>
+<li>Transport logic lives in a loadable module - an operator-written COFF (Windows) or ELF (Linux) object implementing the UDC2 ABI.</li>
+<li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent with <code>channel load</code> / <code>channel start</code> and revert with <code>channel stop</code>. Existing HTTP, DoH, TCP, and SMB builds adopt a channel without being regenerated.</li>
+<li>The external controller bridges any protocol to the existing relay HMAC ingress. It sees only ciphertext, needs no database or API access, and the teamserver still exposes zero agent-facing ports.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Custom transports usually require modifying the implant or framework source and rebuilding. New protocols typically mean a new listener, a schema change, or a fork of the C2 chain, and live agents cannot switch transport without redeployment.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
 <td><b>CDN DOMAIN FRONTING</b></td>
 <td>
 <ul>
@@ -217,27 +233,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Profile systems exist but are often limited in transform depth or lack per-URI granularity.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
-<td><b>USER-DEFINED C2 CHANNELS (UDC2)</b></td>
-<td>
-<ul>
-<li>Transport logic lives in a loadable module - an operator-written COFF (Windows) or ELF (Linux) object implementing the UDC2 ABI. No teamserver recompilation and no new internet-facing listener.</li>
-<li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent with <code>channel load</code> / <code>channel start</code> and revert with <code>channel stop</code>. Existing HTTP, DoH, TCP, and SMB builds adopt a channel without being regenerated.</li>
-<li>The external controller bridges any protocol to the existing relay HMAC ingress. It sees only ciphertext, needs no database or API access, and the teamserver still exposes zero agent-facing ports.</li>
-<li>Channel kit with a complete reference ICMP channel for Eclipse (Windows x64) and Spectre (Linux x86-64), controller source, typed argument validation, and systemd deployment guidance.</li>
-<li>Channel management in the operator console: bind a kit module to an existing relay listener, set platform arguments, test the module, and export a ready-to-run controller config with the exact relay and argument values.</li>
-<li>Any relay listener - AWS, Azure, GCP, or local - can be the controller's ingress, preserving multi-cloud parity with no schema or provider changes.</li>
-<li>Optional fallback returns the agent to its bootstrap HTTP/DoH transport after consecutive channel failures. Pure UDC2 payloads intentionally have no fallback.</li>
-<li>Compatible with the established UDC2 ABI, so existing channel BOFs port with minimal changes.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Custom transports usually require modifying the implant or framework source and rebuilding. New protocols typically mean a new listener, a schema change, or a fork of the C2 chain, and live agents cannot switch transport without redeployment.</li>
 </ul>
 </td>
 </tr>
