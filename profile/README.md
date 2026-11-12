@@ -1,6 +1,6 @@
 <div align="center">
 
-![Phantom](docs/.images/woodmark.jpg)
+![Phantom](docs/.images/woodmark2.png)
 
 Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.
 
