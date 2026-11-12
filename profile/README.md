@@ -1,7 +1,8 @@
+<div align="center">
 
-# Phantom Framework
+![Phantom](profile/docs/.images/woodmark.jpg)
 
-**Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.**
+Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.
 
 </div>
 
