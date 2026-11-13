@@ -90,7 +90,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <ul>
 <li>Transport logic lives in a loadable module - an operator-written COFF (Windows) or ELF (Linux) object implementing the UDC2 ABI.</li>
 <li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent with <code>channel load</code> / <code>channel start</code> and revert with <code>channel stop</code>. Existing HTTP, DoH, TCP, and SMB builds adopt a channel without being regenerated.</li>
-<li>The external controller bridges any protocol to the existing relay HMAC ingress. It sees only ciphertext, needs no database or API access, and the teamserver still exposes zero agent-facing ports.</li>
 </ul>
 </td>
 <td>
