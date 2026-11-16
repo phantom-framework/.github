@@ -116,6 +116,39 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
+<td><b>RELAY RESILIENCE</b></td>
+<td>
+<ul>
+<li>Relay pool is embedded at build time and hot swappable at runtime.</li>
+<li>Up to 10 relay URLs per agent with three rotation strategies: random, round-robin, and failover with automatic fallback.</li>
+<li>Relay authentication prevents unauthorized interaction with deployed infrastructure.</li>
+<li>Stateless relay design means any function instance can serve any request. No sticky sessions, no affinity.</li>
+<li>Encrypted transit: both agents callback over HTTPS with TLS, and every relay request is signed with the agent's per-build relay key.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Callback resilience is typically limited to a small number of fallback URLs with no rotation strategy control.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><b>HTTPS SNI spoofing</b></td>
+<td>
+<ul>
+<li>Windows & Linux Agents supports spoofing the Server Name Indication (SNI) hostname used during HTTPS TLS handshakes.</li>
+<li>Bypass network controls and filtering rules that make decisions based on observed SNI values.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Not supported or unavailable in many competing frameworks.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
 <td><b>AGENT ARCHITECTURE</b></td>
 <td>
 <ul>
@@ -238,24 +271,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
-<td><b>RELAY RESILIENCE</b></td>
-<td>
-<ul>
-<li>Up to 10 relay URLs per agent with three rotation strategies: random, round-robin, and failover with automatic fallback.</li>
-<li>Relay pool is embedded at build time. The agent rotates through the pool on every callback.</li>
-<li>Relay authentication prevents unauthorized interaction with deployed infrastructure.</li>
-<li>Stateless relay design means any function instance can serve any request. No sticky sessions, no affinity.</li>
-<li>Encrypted transit: both agents callback over HTTPS with TLS, and every relay request is signed with the agent's per-build relay key.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Callback resilience is typically limited to a small number of fallback URLs with no rotation strategy control.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
 <td><b>VIRTUAL MACHINE EXECUTION</b></td>
 <td>
 <ul>
@@ -317,21 +332,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Adding a new implant family usually means patching framework internals, recompiling the teamserver, and maintaining a fork. Supported agents are limited to the vendor's own implementations.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
-<td><b>HTTPS SNI spoofing</b></td>
-<td>
-<ul>
-<li>Windows & Linux Agents supports spoofing the Server Name Indication (SNI) hostname used during HTTPS TLS handshakes.</li>
-<li>Bypass network controls and filtering rules that make decisions based on observed SNI values.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Not supported or unavailable in many competing frameworks.</li>
 </ul>
 </td>
 </tr>
