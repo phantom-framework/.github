@@ -306,15 +306,14 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>EXTENSION SYSTEM</b></td>
 <td>
 <ul>
-<li>JavaScript scripting engine (pfScript) with sandboxed execution, import system, and typed command definitions.</li>
+<li>JavaScript scripting engine with sandboxed execution, import system, and typed command definitions.</li>
 <li>Pre-hook argument parsing, BOF/VM parameter packing, and post-hook credential extraction.</li>
 <li>Hot-loadable extension packs with platform and agent-type filtering.</li>
-<li>Drop-in compatibility with Adaptix-framework pf scripts - established packs such as PostEx-Arsenal run unmodified.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Extension APIs exist but are often tightly coupled to the framework internals or lack runtime loading and typed argument support.</li>
+<li>Lack runtime loading and typed argument support.</li>
 </ul>
 </td>
 </tr>
