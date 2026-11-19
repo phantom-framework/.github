@@ -2,19 +2,9 @@
 
 ![Phantom](docs/.images/woodmark2.png)
 
-Serverless command-and-control framework using stateless relays between agents and the teamserver, delivered via cloud functions or stand-in local/remote relay listeners.
+Post-Exploitation framework with native severless deployment support via cloud functions.
 
 </div>
-
-<br>
-
-## Architecture
-
-Phantom separates the attack surface from the operator. Agents communicate exclusively with serverless cloud functions that relay encrypted data through managed databases. The teamserver polls the database from your internal network. No listening ports.
-
-For air-gapped, on-prem, and classified environments, the stand-in **Phantom Listener** replaces cloud infrastructure. A distributed listener architecture separating the traffic-receiving endpoints from the teamserver, which acts as the HTTPS relay. Same wire protocol.
-
-A fifth transport, **UDC2**, moves the agent's wire format out of the implant and into a resident module. The module speaks an arbitrary protocol to a small external controller, which forwards frames through the same relay ingress. Channels can be embedded at build time or hot-swapped into a live agent without rebuilding it.
 
 <br>
 
@@ -56,30 +46,13 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>SERVERLESS INFRASTRUCTURE</b></td>
 <td>
 <ul>
-<li>Zero listening ports. Agents talk to cloud functions, not your server.</li>
 <li>Native support for AWS, Azure, and GCP with full Terraform IaC.</li>
-<li>Infrastructure is ephemeral by design. Tear down and redeploy in minutes.</li>
+<li>Cloud infrastructure deployment is ephemeral by design. Tear down and redeploy in minutes.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Most frameworks require a publicly exposed listener (HTTP/S, DNS, SMB) that can be fingerprinted and blocked.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
-<td><b>DISTRIBUTED LISTENER ARCH</b></td>
-<td>
-<ul>
-<li>Drop-in replacement for cloud relays. Agents use the same wire protocol, same payload builds, same relay authentication.</li>
-<li>Deploy to air-gapped networks, classified environments, on-prem labs, or DMZ hosts where cloud infrastructure is not permitted.</li>
-<li>Hybrid deployments: mix cloud relays and listeners in the same agent relay pool for automatic failover across infrastructure types.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Most frameworks require either a cloud backend or a traditional listener with exposed ports. Operating in disconnected environments without redesigning the C2 chain is rarely supported.</li>
+<li>Most frameworks only natively support vanilla listener (HTTP/S, DNS, SMB) that can be fingerprinted and blocked.</li>
 </ul>
 </td>
 </tr>
@@ -111,24 +84,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Domain fronting support is often manual, fragile, or limited to a single CDN provider.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
-<td><b>RELAY RESILIENCE</b></td>
-<td>
-<ul>
-<li>Relay pool is embedded at build time and hot swappable at runtime.</li>
-<li>Up to 10 relay URLs per agent with three rotation strategies: random, round-robin, and failover with automatic fallback.</li>
-<li>Relay authentication prevents unauthorized interaction with deployed infrastructure.</li>
-<li>Stateless relay design means any function instance can serve any request. No sticky sessions, no affinity.</li>
-<li>Encrypted transit: both agents callback over HTTPS with TLS, and every relay request is signed with the agent's per-build relay key.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Callback resilience is typically limited to a small number of fallback URLs with no rotation strategy control.</li>
 </ul>
 </td>
 </tr>
