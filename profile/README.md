@@ -293,7 +293,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>BOF-based PsExec, SCShell, WinRM, WMI, and DCOM execution.</li>
-<li>SMB named pipe pivoting for agent chaining.</li>
+<li>SMB named pipe/TCP pivoting for agent chaining.</li>
 </ul>
 </td>
 <td>
@@ -326,12 +326,11 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <li>SOCKS4 and SOCKS5 proxy with optional username/password authentication.</li>
 <li>Local and reverse port forwarding through the agent.</li>
 <li>Per-connection channel multiplexing over the C2 protocol.</li>
-<li>Managed from the operator console. Active tunnels are tracked in a dedicated Tunnels panel with badge counts.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>SOCKS support is common but often limited to a single protocol version without authentication. Tunnel management is typically CLI-only with no integrated UI.</li>
+<li>SOCKS support is common but often limited to a single protocol version without authentication.</li>
 </ul>
 </td>
 </tr>
