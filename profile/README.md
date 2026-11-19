@@ -22,7 +22,7 @@ Two native implants. No interpreted languages, no managed runtimes, no framework
 | **Channels** | HTTP, DNS over HTTPS, TCP, SMB, UDC2 channel modules | HTTP, TCP, UDC2 channel modules |
 
 
-These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK without touching the teamserver.
+These are the built-ins. Any other beacon - your own implant, a team-specific loader, a research agent - slots in as an external process through the plugin SDK.
 
 <br>
 
@@ -62,7 +62,7 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Transport logic lives in a loadable module - an operator-written COFF (Windows) or ELF (Linux) object implementing the UDC2 ABI.</li>
-<li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent with <code>channel load</code> / <code>channel start</code> and revert with <code>channel stop</code>. Existing HTTP, DoH, TCP, and SMB builds adopt a channel without being regenerated.</li>
+<li>Two deployment modes: embed the module in the payload, or hot-swap it into a running agent without being regenerated.</li>
 </ul>
 </td>
 <td>
@@ -277,10 +277,8 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td><b>EXTERNAL AGENT PLUGINS (SDK)</b></td>
 <td>
 <ul>
-<li>Integrate any external beacon - or your own payload builder/loader - as a supervised separate process speaking JSON-RPC 2.0 over stdin/stdout. Custom agents integrate without source code access or teamserver recompilation.</li>
-<li>Official Go SDK: implement the protocol and/or builder interface and call <code>Serve()</code>. The wire contract is plain JSON, so plugins can be written in any language.</li>
-<li>Decide per agent what the plugin owns: check-in protocol, payload builds, or both.</li>
-<li>Lifecycle fully managed by the server: handshake and capability negotiation, health pings, crash recovery with restart limits, and per-agent core BOF and module directories passed at initialization.</li>
+<li>Integrate any external beacon - or your own payload builder/loader - as a supervised separate process speaking JSON-RPC 2.0 over stdin/stdout. Custom agents integrate seamlessly.</li>
+<li>The wire contract is plain JSON, so plugins can be written in any language.</li>
 </ul>
 </td>
 <td>
@@ -417,29 +415,6 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 </tr>
 
 <tr>
-<td><b>OPERATOR CONSOLE</b></td>
-<td>
-<ul>
-<li>Real-time web UI over WebSocket. Session table, network graph, and global task views. Tabbed lower pane with drag-and-drop reordering and side-by-side split.</li>
-<li>Dock layout selection support.</li>
-<li>Per-agent console, file browser, process browser, and screenshot gallery.</li>
-<li>Integrated credential store with search, export, and automatic population from post-exploitation output.</li>
-<li>Payload store, tunnel manager, target tracker, team chat, and event log.</li>
-<li>Built-in pf script editor, VM bytecode editor, and communication profile editor.</li>
-<li>UDC2 channel manager: define channels from kit modules, bind them to relay listeners, validate arguments, and export controller configuration.</li>
-<li>Multi-operator presence: see who is online, which agent they are focused on, and when they are typing.</li>
-<li>Role-based access control with admin and operator roles. Read-only mode for observers.</li>
-<li>One-click operation report export as a self-contained PDF document. All operational data is mapped to MITRE ATT&amp;CK tactics and techniques. Includes tactic/technique distribution charts, IOC extraction, and a filterable chronological timeline.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Most frameworks provide a CLI or basic web UI. Integrated editors, multi-operator presence, and automatic credential/target population from tool output are uncommon.</li>
-</ul>
-</td>
-</tr>
-
-<tr>
 <td><b>OPERATIONAL GUARDRAILS</b></td>
 <td>
 <ul>
@@ -466,6 +441,29 @@ These are the built-ins. Any other beacon - your own implant, a team-specific lo
 <td>
 <ul>
 <li>Security feature detection is usually a manual post-exploitation step rather than an automatic check-in property.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><b>OPERATOR CONSOLE</b></td>
+<td>
+<ul>
+<li>Real-time web UI over WebSocket. Session table, network graph, and global task views. Tabbed lower pane with drag-and-drop reordering and side-by-side split.</li>
+<li>Dock layout selection support.</li>
+<li>Per-agent console, file browser, process browser, and screenshot gallery.</li>
+<li>Integrated credential store with search, export, and automatic population from post-exploitation output.</li>
+<li>Payload store, tunnel manager, target tracker, team chat, and event log.</li>
+<li>Built-in pf script editor, VM bytecode editor, and communication profile editor.</li>
+<li>UDC2 channel manager: define channels from kit modules, bind them to relay listeners, validate arguments, and export controller configuration.</li>
+<li>Multi-operator presence: see who is online, which agent they are focused on, and when they are typing.</li>
+<li>Role-based access control with admin and operator roles. Read-only mode for observers.</li>
+<li>One-click operation report export as a self-contained PDF document. All operational data is mapped to MITRE ATT&amp;CK tactics and techniques. Includes tactic/technique distribution charts, IOC extraction, and a filterable chronological timeline.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Most frameworks provide a CLI or basic web UI. Integrated editors, multi-operator presence, and automatic credential/target population from tool output are uncommon.</li>
 </ul>
 </td>
 </tr>
