@@ -2,7 +2,7 @@
 
 ![Phantom](docs/.images/woodmark2.png)
 
-Post-Exploitation framework with native severless deployment support via cloud functions.
+Post-Exploitation framework with native severless deployment support, delivered via cloud functions or embedded local relay listeners.
 
 </div>
 
